@@ -22,3 +22,4 @@ C:\Code\TestGame\TestGame\obj\Debug\net10.0\TestGame.pdb
 C:\Code\TestGame\TestGame\obj\Debug\net10.0\TestGame.genruntimeconfig.cache
 C:\Code\TestGame\TestGame\obj\Debug\net10.0\ref\TestGame.dll
 C:\Code\TestGame\TestGame\obj\Debug\net10.0\TestGame.sourcelink.json
+C:\Code\TestGame\TestGame\bin\Debug\net10.0\resources\textures\arrow.png

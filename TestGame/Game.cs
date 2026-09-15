@@ -5,6 +5,7 @@ namespace TestGame;
 public class Game : GameBase
 {
     private Rectangle player;
+    private Texture2D arrow;
     
     public Game(): base(800, 450, "Test Game") {}
 
@@ -17,6 +18,7 @@ public class Game : GameBase
     {
         base.LoadContent();
         player = new Rectangle(10, 10,10, 10);
+        arrow = ContentManager.LoadTexture("textures/arrow.png");
     }
 
     protected override void Update(GameTime gameTime)
@@ -34,5 +36,6 @@ public class Game : GameBase
         base.Draw(gameTime);
         
         Raylib.DrawRectangleRec(player, Color.White);
+        Raylib.DrawTexture(arrow, 200, 200,Color.White);
     }
 }

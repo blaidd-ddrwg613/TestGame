@@ -8,11 +8,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="resources\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="Raylib-cs" Version="8.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="resources\**\*">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

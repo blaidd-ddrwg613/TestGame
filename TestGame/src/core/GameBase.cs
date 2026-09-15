@@ -8,6 +8,8 @@ public abstract class GameBase
     public int Height { get; }
     public string Title { get; }
     
+    public ContentManager ContentManager { get; private set; }
+    
     public Color ClearColor { get; set; } = Color.Black;
 
     protected GameBase(int width, int height, string title)
@@ -15,6 +17,7 @@ public abstract class GameBase
         Width = width;
         Height = height;
         Title = title;
+        ContentManager = new ContentManager();
     }
 
     public void Run()
@@ -53,5 +56,9 @@ public abstract class GameBase
     protected virtual void LoadContent() { }
     protected virtual void Update(GameTime gameTime) { }
     protected virtual void Draw(GameTime gameTime) { }
-    protected virtual void UnloadContent() { }
+
+    protected virtual void UnloadContent()
+    {
+        ContentManager.UnloadAll();
+    }
 }
