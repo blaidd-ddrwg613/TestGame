@@ -9,6 +9,7 @@ public abstract class GameBase
     public string Title { get; }
     
     public ContentManager ContentManager { get; private set; }
+    public SpriteBatch SpriteBatch { get; private set; }
     
     public Color ClearColor { get; set; } = Color.Black;
 
@@ -17,7 +18,9 @@ public abstract class GameBase
         Width = width;
         Height = height;
         Title = title;
+        
         ContentManager = new ContentManager();
+        SpriteBatch = new SpriteBatch();
     }
 
     public void Run()
@@ -44,11 +47,23 @@ public abstract class GameBase
 
     private void DrawWindow(GameTime gameTime)
     {
-        Raylib.BeginDrawing();
-        Raylib.ClearBackground(ClearColor);
+        BeginDraw();
         
+        Raylib.ClearBackground(ClearColor);
         Draw(gameTime);
         
+        EndDraw();
+    }
+
+    private void BeginDraw()
+    {
+        Raylib.BeginDrawing();
+        SpriteBatch.Begin();
+    }
+
+    private void EndDraw()
+    {
+        SpriteBatch.End();
         Raylib.EndDrawing();
     }
     

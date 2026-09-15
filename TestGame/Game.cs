@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using System.Numerics;
+using Raylib_cs;
 
 namespace TestGame;
 
@@ -35,7 +36,6 @@ public class Game : GameBase
     {
         base.Draw(gameTime);
         
-        Raylib.DrawRectangleRec(player, Color.White);
-        Raylib.DrawTexture(arrow, 200, 200,Color.White);
+        SpriteBatch.Draw(arrow, new Vector2(200, 200), Color.White);
     }
 }
