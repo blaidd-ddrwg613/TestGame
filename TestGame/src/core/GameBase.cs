@@ -58,12 +58,10 @@ public abstract class GameBase
     private void BeginDraw()
     {
         Raylib.BeginDrawing();
-        SpriteBatch.Begin();
     }
 
     private void EndDraw()
     {
-        SpriteBatch.End();
         Raylib.EndDrawing();
     }
     
