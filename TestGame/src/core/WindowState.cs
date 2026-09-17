@@ -81,6 +81,16 @@ public class WindowState
     public  int CurrentMonitor => Raylib.GetCurrentMonitor();
 
     /// <summary>
+    /// Indicates whether the cursor is currently hidden.
+    /// </summary>
+    public bool IsCursorHidden => Raylib.IsCursorHidden();
+
+    /// <summary>
+    /// Determine if the cursor is currently within the boundaries of the screen.
+    /// </summary>
+    public bool IsCursorOnScreen => Raylib.IsCursorOnScreen();
+
+    /// <summary>
     /// Set the tile of the window.
     /// </summary>
     /// <param name="title"></param>
@@ -257,6 +267,24 @@ public class WindowState
         }
 
         return IHateYou;
+    }
+
+
+    /// Cursor Stuff ///
+
+    public void ShowCursor()
+    {
+        Raylib.ShowCursor();
+    }
+
+    public void HideCursor()
+    {
+        Raylib.HideCursor();
+    }
+
+    public void LockCursor()
+    {
+        Raylib.DisableCursor();
     }
     
 }
