@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using ColaGameLib.core.graphics;
 using Raylib_cs;
 using TestGame.core;
@@ -7,6 +7,7 @@ namespace TestGame;
 
 public class Game : GameBase
 {
+    private Rectangle player;
     private Sprite arrow;
     private AnimatedSprite dino;
     
@@ -21,10 +22,10 @@ public class Game : GameBase
     protected override void LoadContent()
     {
         base.LoadContent();
+        player = new Rectangle(10, 10,10, 10);
         arrow = new Sprite(ContentManager.LoadTexture("textures/arrow.png"))
         {
-            Position = new Vector2(100, 100),
-            Scale = new Vector2(4f, 4f)
+            Position = new Vector2(200, 200)
         };
 
         var dinoTex = ContentManager.LoadTexture("textures/dino_walk.png");
@@ -44,7 +45,10 @@ public class Game : GameBase
         walkAnim.AddFrame(atlas.AddRegion(48 * 5,0,dinoSize,dinoSize));
         
         
-        dino = new AnimatedSprite();
+        dino = new AnimatedSprite(dinoTex)
+        {
+            Position = new Vector2(300, 300)
+        };
         dino.AddAnimation("idle",idleAnim);
         dino.AddAnimation("walk",walkAnim);
         dino.Play("idle");
@@ -87,7 +91,7 @@ public class Game : GameBase
         
         arrow.Draw(SpriteBatch);
         
-        dino.Draw(SpriteBatch, new Vector2(300, 300), Color.White); 
+        dino.Draw(SpriteBatch);
         
         SpriteBatch.End();
     }
