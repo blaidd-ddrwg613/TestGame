@@ -1,19 +1,22 @@
-﻿using System.Numerics;
-using Raylib_cs;
+﻿using Raylib_cs;
+using ColaGameLib.core.graphics;
+using TestGame;
 
 namespace TestGame.core;
 
-public class AnimatedSprite
+public class AnimatedSprite : Sprite
 {
     private readonly Dictionary<string, Animation> _animations = new();
-    private Animation _current;
+    private Animation? _current;
     private int _frameIndex;
     private float _timer;
 
-    public bool FlipX { get; set; }
     public bool Loop { get; set; } = true;
 
-    public Vector2 Scale { get; set; } = new(1.0f, 1.0f);
+    public AnimatedSprite(Texture2D texture)
+        : base(texture)
+    {
+    }
 
     // -------------------------
     // ADD ANIMATIONS
@@ -70,24 +73,14 @@ public class AnimatedSprite
     // -------------------------
     // DRAW
     // -------------------------
-    public void Draw(SpriteBatch spriteBatch, Vector2 position, Color tint)
+    public override void Draw(SpriteBatch spriteBatch)
     {
         if (_current == null || _current.Frames.Count == 0)
             return;
 
         var frame = _current.Frames[_frameIndex];
-        var flipX = FlipX ? -frame.Source.Width : frame.Source.Width;
-        Rectangle src = new Rectangle(frame.Source.X, frame.Source.Y, flipX, frame.Source.Height);
-
-        spriteBatch.Draw(
-            frame.Texture,
-            position,
-            tint,
-            src,
-            rotation: 0f,
-            origin: Vector2.Zero, 
-            Scale,
-            depth: 0f
-        );
+        Texture = frame.Texture;
+        Source = frame.Source;
+        base.Draw(spriteBatch);
     }
 }

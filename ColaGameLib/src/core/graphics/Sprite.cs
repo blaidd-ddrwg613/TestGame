@@ -50,7 +50,7 @@ public class Sprite
         Source = region.Source;
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public virtual void Draw(SpriteBatch spriteBatch)
     {
         var source = GetSourceRectangle();
 
