@@ -9,6 +9,8 @@ public class Game : GameBase
 {
     private Sprite arrow;
     private AnimatedSprite dino;
+
+    private Sound _jumpSound;
     
     public Game(): base(800, 450, "Test Game") {}
 
@@ -21,6 +23,9 @@ public class Game : GameBase
     protected override void LoadContent()
     {
         base.LoadContent();
+
+        _jumpSound = ContentManager.LoadSound("audio/sounds/jump.mp3");
+        
         arrow = new Sprite(ContentManager.LoadTexture("textures/arrow.png"))
         {
             Position = new Vector2(100, 100)
@@ -67,6 +72,11 @@ public class Game : GameBase
         {
             walking = true;
             dino.FlipX = true;
+        }
+
+        if (Raylib.IsKeyPressed(KeyboardKey.Space))
+        {
+            AudioManager.PlaySound(_jumpSound);
         }
 
         if (walking)

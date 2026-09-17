@@ -1,4 +1,5 @@
-﻿using Raylib_cs;
+﻿using ColaGameLib.core.audio;
+using Raylib_cs;
 using TestGame.core;
 
 namespace TestGame;
@@ -10,7 +11,10 @@ public abstract class GameBase
     public string Title { get; }
 
     public ContentManager ContentManager { get; private set; }
+    
     public SpriteBatch SpriteBatch { get; private set; }
+    
+    public AudioManager AudioManager { get; private set; }
     
     public WindowState WindowState { get; private set; }
     
@@ -23,6 +27,7 @@ public abstract class GameBase
         Title = title;
         
         ContentManager = new ContentManager();
+        AudioManager = new AudioManager();
         SpriteBatch = new SpriteBatch();
         WindowState = new WindowState();
     }

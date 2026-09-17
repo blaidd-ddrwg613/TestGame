@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Raylib_cs;
+using TestGame.core;
 
 namespace TestGame;
 
@@ -45,6 +46,20 @@ public class ContentManager
         var loaded = Raylib.LoadSound(Path(file));
         _sounds[file] = loaded;
         return loaded;
+    }
+
+    // -------------------------
+    // MUSIC
+    // -------------------------
+    public Music LoadMusic(string file)
+    {
+        var music = Raylib.LoadMusicStream(file);
+        if (!Raylib.IsMusicValid(music))
+        {
+            Logger.Warning($"Unable to load music : {file}");
+        }
+
+        return music;
     }
 
     // -------------------------
