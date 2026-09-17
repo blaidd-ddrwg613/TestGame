@@ -15,6 +15,7 @@ public class Game : GameBase
     protected override void Initialize()
     {
         base.Initialize();
+        Logger.LogLevel = TraceLogLevel.All;
     }
 
     protected override void LoadContent()

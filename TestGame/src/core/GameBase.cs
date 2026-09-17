@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using TestGame.core;
 
 namespace TestGame;
 
@@ -7,9 +8,11 @@ public abstract class GameBase
     public int Width { get; }
     public int Height { get; }
     public string Title { get; }
-    
+
     public ContentManager ContentManager { get; private set; }
     public SpriteBatch SpriteBatch { get; private set; }
+    
+    public WindowState WindowState { get; private set; }
     
     public Color ClearColor { get; set; } = Color.Black;
 
@@ -21,6 +24,7 @@ public abstract class GameBase
         
         ContentManager = new ContentManager();
         SpriteBatch = new SpriteBatch();
+        WindowState = new WindowState();
     }
 
     public void Run()

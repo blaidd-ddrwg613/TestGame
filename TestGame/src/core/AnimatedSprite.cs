@@ -37,7 +37,7 @@ public class AnimatedSprite
     // -------------------------
     // PLAY BY REFERENCE
     // -------------------------
-    public void Play(Animation anim)
+    private void Play(Animation anim)
     {
         if (_current == anim)
             return;
