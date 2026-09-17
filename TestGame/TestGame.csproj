@@ -13,9 +13,6 @@
         </None>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="src\" />
-    </ItemGroup>
-    <ItemGroup>
       <ProjectReference Include="..\ColaGameLib\ColaGameLib.csproj" />
     </ItemGroup>
 

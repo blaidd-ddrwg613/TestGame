@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ColaGameLib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e73e92a6551416a0dcad5ca46a923b77f8c52b6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+675826084af41881043a8f2ae1b21a7cf399786d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ColaGameLib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ColaGameLib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

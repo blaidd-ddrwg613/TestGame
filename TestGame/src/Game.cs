@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using ColaGameLib.core.graphics;
 using Raylib_cs;
 using TestGame.core;
 
@@ -6,8 +7,7 @@ namespace TestGame;
 
 public class Game : GameBase
 {
-    private Rectangle player;
-    private Texture2D arrow;
+    private Sprite arrow;
     private AnimatedSprite dino;
     
     public Game(): base(800, 450, "Test Game") {}
@@ -21,8 +21,11 @@ public class Game : GameBase
     protected override void LoadContent()
     {
         base.LoadContent();
-        player = new Rectangle(10, 10,10, 10);
-        arrow = ContentManager.LoadTexture("textures/arrow.png");
+        arrow = new Sprite(ContentManager.LoadTexture("textures/arrow.png"))
+        {
+            Position = new Vector2(100, 100),
+            Scale = new Vector2(4f, 4f)
+        };
 
         var dinoTex = ContentManager.LoadTexture("textures/dino_walk.png");
         var atlas = new TextureAtlas(dinoTex);
@@ -82,7 +85,7 @@ public class Game : GameBase
         
         SpriteBatch.Begin();
         
-        SpriteBatch.Draw(arrow, new Vector2(200, 200), Color.White);
+        arrow.Draw(SpriteBatch);
         
         dino.Draw(SpriteBatch, new Vector2(300, 300), Color.White); 
         
