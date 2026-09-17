@@ -1,6 +1,7 @@
-﻿using Raylib_cs;
+
+using System.Collections.Generic;
 using ColaGameLib.core.graphics;
-using TestGame;
+using Raylib_cs;
 
 namespace TestGame.core;
 
@@ -13,9 +14,9 @@ public class AnimatedSprite : Sprite
 
     public bool Loop { get; set; } = true;
 
-    public AnimatedSprite(Texture2D texture)
-        : base(texture)
+    public AnimatedSprite(Texture2D texture) : base(texture)
     {
+        
     }
 
     // -------------------------

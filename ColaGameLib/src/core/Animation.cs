@@ -1,4 +1,6 @@
-﻿namespace TestGame;
+﻿using System.Collections.Generic;
+
+namespace TestGame;
 
 public class Animation
 {
