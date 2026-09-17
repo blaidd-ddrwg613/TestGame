@@ -38,7 +38,7 @@ public class WindowState
     /// <summary>
     /// Get native window handle.
     /// </summary>
-    public  unsafe void* WindowHandle => Raylib.GetWindowHandle();
+    public unsafe void* WindowHandle => Raylib.GetWindowHandle();
 
     /// <summary>
     /// Get window pos XY on the monitor.
