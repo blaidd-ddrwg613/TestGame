@@ -9,6 +9,7 @@ public class ContentManager
     private readonly string _rootDirectory;
     private readonly Dictionary<string, Texture2D> _textures = new();
     private readonly Dictionary<string, Sound> _sounds = new();
+    private readonly Dictionary<string, Music> _musicStreams = new();
     private readonly Dictionary<string, Font> _fonts = new();
     private readonly Dictionary<string, Shader> _shaders = new();
 
@@ -53,12 +54,16 @@ public class ContentManager
     // -------------------------
     public Music LoadMusic(string file)
     {
-        var music = Raylib.LoadMusicStream(file);
+        if (_musicStreams.TryGetValue(file, out var existingMusic))
+            return existingMusic;
+        
+        var music = Raylib.LoadMusicStream(Path(file));
         if (!Raylib.IsMusicValid(music))
         {
             Logger.Warning($"Unable to load music : {file}");
         }
 
+        _musicStreams[file] = music;
         return music;
     }
 
@@ -98,6 +103,8 @@ public class ContentManager
             Raylib.UnloadTexture(tex);
         foreach (var snd in _sounds.Values)
             Raylib.UnloadSound(snd);
+        foreach (var music in _musicStreams.Values)
+            Raylib.UnloadMusicStream(music);
         foreach (var font in _fonts.Values)
             Raylib.UnloadFont(font);
         foreach (var shader in _shaders.Values)
@@ -105,6 +112,7 @@ public class ContentManager
 
         _textures.Clear();
         _sounds.Clear();
+        _musicStreams.Clear();
         _fonts.Clear();
         _shaders.Clear();
     }

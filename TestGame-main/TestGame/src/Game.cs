@@ -25,6 +25,7 @@ public class Game : GameBase
         base.LoadContent();
 
         _jumpSound = ContentManager.LoadSound("audio/sounds/jump.mp3");
+        AudioManager.SetSoundVolume(_jumpSound, 0.1f);
         
         arrow = new Sprite(ContentManager.LoadTexture("textures/arrow.png"))
         {
@@ -62,19 +63,19 @@ public class Game : GameBase
         base.Update(gameTime);
         var walking = false;
 
-        if (Raylib.IsKeyDown(KeyboardKey.D))
+        if (Input.IsDown("MoveRight"))
         {
             walking = true;
             dino.FlipX = false;
         }
 
-        if (Raylib.IsKeyDown(KeyboardKey.A))
+        if (Input.IsDown("MoveLeft"))
         {
             walking = true;
             dino.FlipX = true;
         }
 
-        if (Raylib.IsKeyPressed(KeyboardKey.Space))
+        if (Input.IsPressed("Jump"))
         {
             AudioManager.PlaySound(_jumpSound);
         }
